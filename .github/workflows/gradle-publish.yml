@@ -33,7 +33,7 @@ jobs:
         
     - name: List files in the repository
       run: |
-        ls ${{ github.workspace }}/target
+        ls ${{ github.workspace }}/build
     - name: Download a Build Artifact
       uses: actions/upload-artifact@v2
       with:
