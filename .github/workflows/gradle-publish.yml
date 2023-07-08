@@ -30,14 +30,14 @@ jobs:
       with:
         arguments: clean build 
         gradle-version: wrapper
-
-    - name: Publish
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        
+    - name: List files in the repository
+      run: |
+        ls ${{ github.workspace }}/target
+    - name: Download a Build Artifact
+      uses: actions/upload-artifact@v2
       with:
-        arguments: curseforge modrinth publish
-        gradle-version: wrapper
-      env:
-        CURSEFORGE_KEY: ${{ secrets.CURSEFORGE_KEY }}
-        MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-        MEK_MAVEN_PW: ${{ secrets.MEK_MAVEN_PW }}
-        BUILD_NUMBER: ${{ github.run_id }}
+          # Artifact name
+          name: com.alex.tools-0.01.jar
+          # Destination path
+          path: ${{ github.workspace }}/target/com.alex.tools-0.01.jar
